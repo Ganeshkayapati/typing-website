@@ -1,16 +1,19 @@
 import { generate, count } from "random-words";
-import { createRef, useEffect, useRef, useState, useMemo } from "react";
+import { createRef, useEffect, useRef, useState, useMemo, use } from "react";
 import UpperMenu from "./UpperMenu";
+import { useTestMode } from "../context/TestModeContext";
 
 function TypingBox() {
   const inputRef = useRef(null);
 
+  const {testTime}=useTestMode()
   const [wordsArray, setWordsArray] = useState(() => {
     return generate(50);
   });
-  const [countDown,setcountDown]=useState(15); 
+  const [countDown,setcountDown]=useState(testTime); 
   const [testStarted, setTestStarted] = useState(false);
   const [testEnd, setTestEnd] = useState(false);
+  const [intrevalId,setIntrevalId] = useState(null);
 
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
@@ -26,6 +29,7 @@ function TypingBox() {
   const startTimer=()=>{
     
     const intrevalId=setInterval(timer,1000);
+    setIntrevalId(intrevalId);
 
     function timer(){
        setcountDown((latestCountDown)=>{
@@ -38,6 +42,27 @@ function TypingBox() {
        });
     }
 
+  }
+
+  const resetTest = () => {
+    clearInterval(intrevalId);
+    setcountDown(testTime);
+    setCurrentWordIndex(0);
+    setCurrentCharIndex(0);
+    setTestStarted(false);
+    setTestEnd(false);
+    setWordsArray(generate(50));
+    resetWordsSpanRefClassName();
+    focusInput();
+
+  }
+  const resetWordsSpanRefClassName = () => {
+    wordsSpanRef.map(i=>{
+      Array.from(i.current.childNodes).map(j=>{
+        j.className = '';
+      })
+    })
+    wordsSpanRef[0].current.childNodes[0].className = "current";
   }
   const handleUserInput = (event) => {
     if(!testStarted) {
@@ -121,6 +146,11 @@ function TypingBox() {
   const focusInput = () => {
     inputRef.current.focus();
   };
+
+  useEffect(() => {
+    resetTest();
+  },[testTime])
+
   useEffect(() => {
     focusInput();
    

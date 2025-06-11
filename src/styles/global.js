@@ -96,4 +96,22 @@ body{
     color: red;
     font-weight: bold;
 }
+.upper-menu {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+}
+.modes{
+  display: flex;
+  gap: 0.5rem;
+}
+.time-mode:hover {
+  color: green;
+  cursor: pointer;
+}
+
 `;
