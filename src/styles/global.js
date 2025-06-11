@@ -123,4 +123,27 @@ body{
     margin-right: auto;
 }
 
+.stats-box {
+    display: flex;
+    width: 1000px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+.left-stats {
+    width: 30%;
+    padding: 30px;
+}
+.right-stats {
+    width: 70%;
+}
+.title {
+    font-size: 20px;
+    color: ${({theme})=>theme.typeBoxColor};
+}
+.subtitle {
+    font-size: 30px;
+    color: #ffcc99;
+}
+
 `;

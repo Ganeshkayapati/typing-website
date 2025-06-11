@@ -9,8 +9,8 @@
 const darkTheme={
     label: 'dark',
     background:"black",
-    textColor:"white",
-    typeBoxColor:"grey"
+    typeBoxColor:"grey",
+    title: 'white',
     
 }
 
