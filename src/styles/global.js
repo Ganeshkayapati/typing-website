@@ -1,4 +1,5 @@
 import {createGlobalStyle} from 'styled-components'
+
 export const GlobalStyle=createGlobalStyle`
 
 *{
@@ -7,8 +8,8 @@ export const GlobalStyle=createGlobalStyle`
 }
 
 body{
-    background:black;
-    color:white;
+    background:${({theme})=>theme.background};
+    color:${({theme})=>theme.textColor};
     margin:0;
     padding:0;
     transition: all 0.3s linear;
@@ -36,6 +37,7 @@ body{
     font-size: 32px;
     display: flex;
     flex-wrap: wrap;
+    color:${({theme})=>theme.typeBoxColor};
 }
 .word {
     margin:5px;
@@ -50,19 +52,19 @@ body{
     animation-timing-function: ease;
     @keyframes blinkingRight{
         0% {
-            border-left-color: white;
+            border-left-color: ${({theme})=>theme.textColor};;
         }
         25% {
-            border-left-color: black;
+            border-left-color: ${({theme})=>theme.textColor};;
         }
         50% {
-            border-left-color: white;
+            border-left-color: ${({theme})=>theme.textColor};;
         }
         75% {
-            border-left-color: black;
+            border-left-color: ${({theme})=>theme.textColor};;
         }
         100% {
-            border-left-color: white;
+            border-left-color: ${({theme})=>theme.textColor};;
         }
     }
 }
@@ -72,24 +74,24 @@ body{
     animation-timing-function: ease;
     @keyframes blinking {
         0% {
-            border-right-color: white;
+            border-right-color: ${({theme})=>theme.textColor};;
         }
         25% {
-            border-right-color: black;
+            border-right-color: ${({theme})=>theme.textColor};;
         }
         50% {
-            border-right-color: white;
+            border-right-color: ${({theme})=>theme.textColor};;
         }
         75% {
-            border-right-color: black;
+            border-right-color: ${({theme})=>theme.textColor};;
         }
         100% {
-            border-right-color: white;
+            border-right-color: ${({theme})=>theme.textColor};;
         }
     }
 }
 .correct {
-    color: green;
+    color: ${({theme})=>theme.textColor};;
     font-weight: bold;
 }
 .incorrect {
@@ -112,6 +114,13 @@ body{
 .time-mode:hover {
   color: green;
   cursor: pointer;
+}
+.footer{
+    width:1000px;
+    display:flex;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 `;

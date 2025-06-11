@@ -4,11 +4,16 @@ import { TextModeContextProvider } from './context/TestModeContext.jsx'
 
 import App from './App.jsx'
 
+import { ThemeContextProvider } from './context/ThemeContext.jsx'
+
 createRoot(document.getElementById('root')).render(
   //<StrictMode>
-  <TextModeContextProvider>
-     <App />
-  </TextModeContextProvider>
+  <ThemeContextProvider>
+     <TextModeContextProvider>
+      <App />
+    </TextModeContextProvider>
+  </ThemeContextProvider>
+ 
    
   //</StrictMode>,
 )
