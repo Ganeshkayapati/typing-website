@@ -2,10 +2,50 @@
 import  {Box, Button, TextField } from '@mui/material'
 import { useState } from 'react';
 import { useTheme } from '../context/ThemeContext';
+import {auth} from "../fireBaseConfig"
+import { toast } from "react-toastify";
 const LoginForm=()=>{
     const {theme}=useTheme();
     const [email,setEmail]=useState("");
      const [pass,setPass]=useState("");
+    const handleSubmit=()=>{
+          if(!email || !pass){
+           toast.warning("Fill all details", {
+             position: "top-right",
+             autoClose: 5000,
+             hideProgressBar: false,
+             closeOnClick: false,
+             pauseOnHover: true,
+             draggable: true,
+             progress: undefined,
+             theme: "dark"
+           });
+            return;
+        }
+        auth.signInWithEmailAndPassword(email,pass).then((res)=>{
+             toast.success("Succesfully LoggedIn", {
+             position: "top-right",
+             autoClose: 5000,
+             hideProgressBar: false,
+             closeOnClick: false,
+             pauseOnHover: true,
+             draggable: true,
+             progress: undefined,
+             theme: "dark"
+           });
+        }).catch((err)=>{
+             toast.error("Invalid Credentials", {
+             position: "top-right",
+             autoClose: 5000,
+             hideProgressBar: false,
+             closeOnClick: false,
+             pauseOnHover: true,
+             draggable: true,
+             progress: undefined,
+             theme: "dark"
+           });
+        })
+    }
     return(
         <Box p={3}
 
@@ -46,7 +86,7 @@ const LoginForm=()=>{
                     }
                 }
             }/>
-            <Button variant='contained' size='large' style={{backgroundColor:theme.title,background:theme.typeBoxColor}}>Login</Button>
+            <Button variant='contained' size='large' style={{backgroundColor:theme.title,background:theme.typeBoxColor}} onClick={handleSubmit}>Login</Button>
         </Box>
     )
 }

@@ -2,7 +2,8 @@
 import  { Box, Button, TextField } from '@mui/material'
 import { useState } from 'react';
 import { useTheme } from '../context/ThemeContext';
-import {auth} from "../fireBaseConfig"
+import {auth} from "../fireBaseConfig";
+import { toast } from 'react-toastify';
 const SignUpForm=()=>{
     const {theme}=useTheme();
     const [email,setEmail]=useState("");
@@ -11,22 +12,71 @@ const SignUpForm=()=>{
 
     const handleSubmit=()=>{
         if(!email || !pass || !confirmPass){
-            alert("Fill all the details");
+             toast.warning("Fill all details", {
+               position: "top-right",
+               autoClose: 5000,
+               hideProgressBar: false,
+               closeOnClick: false,
+               pauseOnHover: true,
+               draggable: true,
+               progress: undefined,
+               theme: "dark",
+             });
             return;
         }
         if(pass.length<6){
-            alert("Password should be atlest 6 charachters");
+             toast.warning("Password should be atlest 6 charachters", {
+               position: "top-right",
+               autoClose: 5000,
+               hideProgressBar: false,
+               closeOnClick: false,
+               pauseOnHover: true,
+               draggable: true,
+               progress: undefined,
+               theme: "dark",
+             });
             return;
         }
         if(pass!==confirmPass){
-            alert("Password Mismatch");
+            toast.warning("Password Mismatch", {
+               position: "top-right",
+               autoClose: 5000,
+               hideProgressBar: false,
+               closeOnClick: false,
+               pauseOnHover: true,
+               draggable: true,
+               progress: undefined,
+               theme: "dark",
+             });
+             return;
+            
         }
 
         auth.createUserWithEmailAndPassword(email,pass).then((res)=>{
-            alert("User Created")
+            
+             toast.success("User Created", {
+               position: "top-right",
+               autoClose: 5000,
+               hideProgressBar: false,
+               closeOnClick: false,
+               pauseOnHover: true,
+               draggable: true,
+               progress: undefined,
+               theme: "dark",
+             });
+            
         }).catch((err)=>{
         
-            alert("User not created");
+             toast.error("User Not created", {
+               position: "top-right",
+               autoClose: 5000,
+               hideProgressBar: false,
+               closeOnClick: false,
+               pauseOnHover: true,
+               draggable: true,
+               progress: undefined,
+               theme: "dark",
+             });
         })
     }
     return(
