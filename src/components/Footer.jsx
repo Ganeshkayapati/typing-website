@@ -24,7 +24,7 @@ const Footer = () => {
 >
   <div className="links" style={{ display: 'flex', gap: '10px' }}>
     <a
-      href="https://github.com/Ganeshkayapati/"
+      href="https://github.com/Ganeshkayapati/typing-website"
       target="_blank"
       rel="noopener noreferrer"
       style={{ color: '#87CEFA' }} // Light Sky Blue
