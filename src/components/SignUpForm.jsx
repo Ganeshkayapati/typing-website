@@ -4,7 +4,8 @@ import { useState } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import {auth} from "../fireBaseConfig";
 import { toast } from 'react-toastify';
-const SignUpForm=()=>{
+import errorMapping from '../utils/errorMapping';
+const SignUpForm=({handleClose})=>{
     const {theme}=useTheme();
     const [email,setEmail]=useState("");
     const [pass,setPass]=useState("");
@@ -24,19 +25,7 @@ const SignUpForm=()=>{
              });
             return;
         }
-        if(pass.length<6){
-             toast.warning("Password should be atlest 6 charachters", {
-               position: "top-right",
-               autoClose: 5000,
-               hideProgressBar: false,
-               closeOnClick: false,
-               pauseOnHover: true,
-               draggable: true,
-               progress: undefined,
-               theme: "dark",
-             });
-            return;
-        }
+    
         if(pass!==confirmPass){
             toast.warning("Password Mismatch", {
                position: "top-right",
@@ -64,10 +53,10 @@ const SignUpForm=()=>{
                progress: undefined,
                theme: "dark",
              });
-            
+            handleClose();
         }).catch((err)=>{
         
-             toast.error("User Not created", {
+             toast.error(errorMapping[err.code] || "some error occured", {
                position: "top-right",
                autoClose: 5000,
                hideProgressBar: false,

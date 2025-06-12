@@ -4,7 +4,8 @@ import { useState } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import {auth} from "../fireBaseConfig"
 import { toast } from "react-toastify";
-const LoginForm=()=>{
+import errorMapping from '../utils/errorMapping';
+const LoginForm=({handleClose})=>{
     const {theme}=useTheme();
     const [email,setEmail]=useState("");
      const [pass,setPass]=useState("");
@@ -33,8 +34,9 @@ const LoginForm=()=>{
              progress: undefined,
              theme: "dark"
            });
+           handleClose();
         }).catch((err)=>{
-             toast.error("Invalid Credentials", {
+             toast.error(errorMapping[err.code] || "some error occured", {
              position: "top-right",
              autoClose: 5000,
              hideProgressBar: false,

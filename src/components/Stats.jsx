@@ -1,4 +1,8 @@
+import { db } from "../fireBaseConfig";
 import Graph from "./Graph";
+import {auth} from '../fireBaseConfig'
+import { toast } from "react-toastify";
+import { useEffect } from "react";
 
 
 const Stats=(
@@ -17,6 +21,70 @@ const Stats=(
              return data;
         } 
     });
+
+    const pushDataToDB=()=>{
+        if(isNaN(accuracy)){
+            toast.error("invalid test", {
+             position: "top-right",
+             autoClose: 5000,
+             hideProgressBar: false,
+             closeOnClick: false,
+             pauseOnHover: true,
+             draggable: true,
+             progress: undefined,
+             theme: "dark"
+           });
+           return;
+        }
+        const resultRef=db.collection('Results');
+        const {uid}=auth.currentUser;
+        resultRef.add({
+            wpm:wpm,
+            accuracy:accuracy,
+            timeStamp:new Date(),
+            charcters:`${correctChars}/${inCorrectChars}/${missedChars}/${missedChars}/${extraChars}`,
+            userId:uid
+        }).then((res)=>{
+             toast.success("Data Saved", {
+               position: "top-right",
+               autoClose: 5000,
+               hideProgressBar: false,
+               closeOnClick: false,
+               pauseOnHover: true,
+               draggable: true,
+               progress: undefined,
+               theme: "dark",
+             });
+        }).catch((err)=>{
+            toast.error(errorMapping[err.code] || "error in saving data", {
+             position: "top-right",
+             autoClose: 5000,
+             hideProgressBar: false,
+             closeOnClick: false,
+             pauseOnHover: true,
+             draggable: true,
+             progress: undefined,
+             theme: "dark"
+           });
+        })
+    }
+
+    useEffect(()=>{
+        if(auth.currentUser){
+            pushDataToDB();
+        }else{
+            toast.warning("Login to save into DB", {
+             position: "top-right",
+             autoClose: 5000,
+             hideProgressBar: false,
+             closeOnClick: false,
+             pauseOnHover: true,
+             draggable: true,
+             progress: undefined,
+             theme: "dark"
+           });
+        }
+    })
     return (
         <div className="stats-box">
             <div className="left-stats">
