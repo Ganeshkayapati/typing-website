@@ -110,6 +110,10 @@ body{
 .modes{
   display: flex;
   gap: 0.5rem;
+  
+}
+.time-mode{
+    color:${({theme})=>theme.title};
 }
 .time-mode:hover {
   color: green;

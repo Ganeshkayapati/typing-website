@@ -1,19 +1,4 @@
 
-
-
-
-
-
-
-
-const darkTheme={
-    label: 'dark',
-    background:"black",
-    typeBoxColor:"grey",
-    title: 'white',
-    
-}
-
 const superUserTheme = {
     label: 'Super User',
     background: '#262A33',
@@ -53,7 +38,6 @@ const aetherTheme = {
 }
 
 export const themeOptions = [
-    {value: darkTheme, label: 'Dark'},
     {value: superUserTheme, label: 'Super User'},
     {value: darkMagic, label: 'Dark Magic'},
     {value: bentoTheme, label: "Bento"},
