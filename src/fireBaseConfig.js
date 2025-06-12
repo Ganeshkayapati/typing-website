@@ -1,23 +1,20 @@
-import firebase from "firebase/compat/app";
 
+import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
 
-
-
 const firebaseConfig = {
-  apiKey: "AIzaSyCEAnY-MDiPn0-aOE2b-pKb9DpMT3DPqTQ",
-  authDomain: "typing-website-a57eb.firebaseapp.com",
-  projectId: "typing-website-a57eb",
-  storageBucket: "typing-website-a57eb.firebasestorage.app",
-  messagingSenderId: "876860267809",
-  appId: "1:876860267809:web:954205809751b585c23260",
-  measurementId: "G-83ZH8EZYFH"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
-const firebaseApp=firebase.initializeApp(firebaseConfig);
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
 
-const auth=firebase.auth();
-const db=firebase.firestore();
-
-export {auth,db}
+export { auth, db };
