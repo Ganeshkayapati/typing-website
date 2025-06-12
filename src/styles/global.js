@@ -154,4 +154,56 @@ body{
     margin-right:auto;
    
 }
+.user-profile{
+    width:1000px;
+    margin:auto;
+    display:flex;
+    height:15rem;
+    background:${({theme})=>theme.typeBoxColor};
+    opacity:0.8;
+    border-radius:20px;
+    justify-content:center;
+    textAlign:center;
+    padding:1rem;
+}
+.user{
+    width:50%;
+    display:flex;
+    margin-top:30px;
+    margin-bottom:30px
+    font-size:1.5rem;
+    padding:1rem;
+    border-right:2px solid ;
+}
+.info{ 
+    width:60%;
+    padding:2rem;
+    marginTop:1rem;
+}
+.picture{
+    width:40%;
+}
+.tests{
+    width:50%;
+    font-size:3rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.table,graph-userPage{
+    margin:auto;
+    width:1000px;
+}
+.center-of-screen{
+    display:flex;
+    min-height:100vh;
+    justify-content:center;
+    align-items:center;
+}
+.graph-userPage {
+  width: 600px;
+  height: 300px;
+  margin:0 auto;
+}
+
 `;

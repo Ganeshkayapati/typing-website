@@ -21,7 +21,7 @@ const Graph = ({graphData}) => {
                 ]
             }
 
-          }/>
+          } />
         </>
     );
 }
