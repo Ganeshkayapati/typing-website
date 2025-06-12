@@ -1,18 +1,15 @@
 # Typing Speed & Accuracy Tracker
 
-A React + Vite typing website where users can take typing tests, measure their speed (WPM) and accuracy, log in to view their results, and compare performance with other users by username.
+A React + Vite typing website where users can take typing tests, measure their speed (WPM) and accuracy, log in to view their results.
 
 ## Features
 - **Typing Test**: Real-time typing challenge with a random or chosen passage.
 - **Speed & Accuracy Calculation**: Calculates Words Per Minute (WPM) and accuracy percentage at the end of each test.
 - **User Authentication**: Sign up / log in (e.g., via Firebase Auth) to save your test results.
 - **Dashboard**: After logging in, users can view their history of tests, with timestamps, WPM, accuracy, and number of characters typed.
-- **Comparison**: Compare your results with other users by entering their username; view leaderboards or side-by-side stats.
 - **Theme Support**: Light/dark or custom themes via a ThemeContext.
 - **Responsive UI**: Built with MUI (Material UI) and responsive layouts.
 - **Charts & Visualization**: Display past performance over time (e.g., line charts of WPM).
-- **Notifications**: Toast messages for login/logout, test completion, errors, etc.
-- **Mobile-Friendly**: Adaptable layout for smaller screens.
 
 ## Tech Stack
 - **Frontend**:
